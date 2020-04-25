@@ -1,0 +1,15 @@
+#map {
+    height:400px;
+    width: 100%;
+}
+
+:root {
+    --primary: #2B580C;
+    --secondary: #639A67;
+    --tertiary: #D8EBB5;
+    --final: #D9BF77;
+}
+
+header {
+    background-color: var(--primary);
+}
