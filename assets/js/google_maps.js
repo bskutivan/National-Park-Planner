@@ -1,16 +1,26 @@
+// create park map markers
+
+
+
 
 // initialize map
 function initMap() {
         
     // set to center of US
     var options = {
+        // to change zoom of map adjust this number up or down
         zoom: 4,
         center: {lat:39.8283, lng:-98.5795}    
     }
     var map = new   
     
     google.maps.Map(document.getElementById('map'), options)
- 
+    
+    // add markers for parks
+    var marker = new google.maps.Marker({
+        position:{lat:38.68333, lng:-109.56667},
+        map:map
+    });
 }
 
 // take lat and lng values and recenter map
@@ -30,7 +40,6 @@ function specifyMap(lat, lng) {
         map:map
     });
 
-    
 }
 
 function centerMap(address) {
@@ -42,7 +51,8 @@ function centerMap(address) {
             response.json().then(function(data) {
                 var lat = data.results[0].geometry.location.lat;
                 var lng = data.results[0].geometry.location.lng;
-                console.log(lat, lng);
+                specifiedStateCode = data.results[0].address_components[2].short_name;
+                
                 specifyMap(lat, lng);
 
             })
