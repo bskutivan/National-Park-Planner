@@ -10,8 +10,10 @@ function formatQueryParams(params) {
 
 function displayResults(responseJson) {
   console.log(responseJson);
+  console.log(responseJson.data[0].latLong)
   $('#results-list').empty();
   for (let i = 0; i < responseJson.data.length; i++){
+    mapMarkers.push(responseJson.data[i].latLong);
     $('#results-list').append(
       `<li><h3>${responseJson.data[i].fullName} - Location: ${responseJson.data[i].states}</h3>
       <p>Address: ${responseJson.data[i].latLong}</p>

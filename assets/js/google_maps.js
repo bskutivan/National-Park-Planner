@@ -1,6 +1,13 @@
 // create park map markers
 
+mapMarkers = [];
 
+function addMarker(mapMarkers) {
+    var marker = new google.maps.Marker({
+        pisition:mapMarkers,
+        map:map
+    })
+}
 
 
 // initialize map
@@ -33,6 +40,8 @@ function specifyMap(lat, lng) {
         position:{lat:lat, lng:lng},
         map:map
     });
+  console.log(specifiedStateCode); 
+    //addMarker(mapMarkers);
 
 }
 
@@ -45,7 +54,7 @@ function centerMap(address) {
             response.json().then(function(data) {
                 var lat = data.results[0].geometry.location.lat;
                 var lng = data.results[0].geometry.location.lng;
-                specifiedStateCode = data.results[0].address_components[2].short_name;
+                specifiedStateCode = data.results[0].address_components[4].short_name;
                 
                 specifyMap(lat, lng);
 
