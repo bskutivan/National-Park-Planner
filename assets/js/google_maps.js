@@ -2,11 +2,14 @@
 
 mapMarkers = [];
 
-function addMarker(mapMarkers) {
-    var marker = new google.maps.Marker({
-        pisition:mapMarkers,
-        map:map
-    })
+function addMarker(responseJson) {
+    console.log(responseJson.data[0].latLong)
+
+
+    // var marker = new google.maps.Marker({
+    //     pisition:mapMarkers,
+    //     map:map
+    // })
 }
 
 
@@ -40,9 +43,22 @@ function specifyMap(lat, lng) {
         position:{lat:lat, lng:lng},
         map:map
     });
-  console.log(specifiedStateCode); 
-    //addMarker(mapMarkers);
+    console.log(specifiedStateCode); 
+    
+}
 
+function getStateCode(lat,lng) {
+    var apiUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&key=AIzaSyCoXn_X7KuEAYtlQ8VUpKfHmg0LmjCFqtU";
+    
+    fetch(apiUrl).then(function(response) {
+        if(response.ok) {
+            response.json().then(function(data) {
+                specifiedStateCode = data.results[0].address_components[5].short_name;
+                getParks(specifiedStateCode);
+
+            }) 
+        }
+    })
 }
 
 function centerMap(address) {
@@ -54,11 +70,11 @@ function centerMap(address) {
             response.json().then(function(data) {
                 var lat = data.results[0].geometry.location.lat;
                 var lng = data.results[0].geometry.location.lng;
-                specifiedStateCode = data.results[0].address_components[4].short_name;
+                
+                getStateCode(lat,lng);
                 
                 specifyMap(lat, lng);
-
-            })
+            });
         } else {
             alert("Error: " + response.statusText);
         }
