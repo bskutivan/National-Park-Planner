@@ -15,12 +15,6 @@ function initMap() {
     var map = new   
     
     google.maps.Map(document.getElementById('map'), options)
-    
-    // add markers for parks
-    var marker = new google.maps.Marker({
-        position:{lat:38.68333, lng:-109.56667},
-        map:map
-    });
 }
 
 // take lat and lng values and recenter map
