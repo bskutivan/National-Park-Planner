@@ -10,6 +10,7 @@ function formatQueryParams(params) {
 
 function displayResults(responseJson) {
   console.log(responseJson);
+  console.log(responseJson.data[0].latLong)
   $('#results-list').empty();
   for (let i = 0; i < responseJson.data.length; i++){
     mapMarkers.push(responseJson.data[i].latLong);
@@ -22,6 +23,7 @@ function displayResults(responseJson) {
       </li>`
     )}; 
   $('#results').removeClass('hidden');
+  addMarker(mapMarkers);
 };
 
 function getParks(stateCode, limit=10) {
@@ -44,7 +46,6 @@ function getParks(stateCode, limit=10) {
       throw new Error(response.statusText);
     })
     .then(responseJson => displayResults(responseJson))
-    .then(responseJson => addMarker(responseJson))
     .catch(err => {
       $('#error-message').text(`Something went wrong: ${err.message}`);
     });
@@ -58,7 +59,7 @@ function submitButtonHandler() {
     var address = addressEl.value.trim();
 
     centerMap(address);
-    // empty markers array upon click
+
     mapMarkers = []
 
 } 

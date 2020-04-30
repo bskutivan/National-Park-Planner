@@ -13,3 +13,15 @@
 header {
     background-color: var(--primary);
 }
+
+#park {
+    border: solid;
+}
+
+#park:hover {
+    background-color: var(--primary);
+}
+
+.hidden {
+    display:none;
+}
