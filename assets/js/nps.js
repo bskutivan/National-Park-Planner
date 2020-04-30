@@ -1,4 +1,4 @@
-const api_key = 'kWSmA8a1lM5M5VscIAoYqjQiYWUSCWZ2NwRm4Jt4'; 
+const api_key = 'VfkmmuuGjuSAkheEeXmvfQS5Q6HchOCAN2SEgZvm'; 
 const searchURL = 'https://developer.nps.gov/api/v1/parks';
 var stateCode = specifiedStateCode
 
