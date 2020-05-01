@@ -7,7 +7,8 @@ function splitLongLat(mapMarkers) {
     console.log(mapMarkers);
     for (let i = 0; i < mapMarkers.length; i++) {
         console.log(mapMarkers[i]);
-        // var split = mapMarkers[i].split(",");
+        var test = mapMarkers[i].replace(o, "");
+        console.log(test);
         // for (let u = 0; u < split.length; u++) {
         //     if (u = 0) {
         //         test = split[u].slice(4);
