@@ -8,9 +8,3 @@ let specifiedStateCode = ""
 
 
 // Global Variables Above
-
-
-
-
-
-

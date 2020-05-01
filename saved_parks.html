@@ -1,23 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js" dir="ltr">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
-    <link rel="stylesheet" href="Assets/styles/saved_parks.css">
+    <link rel="stylesheet" href="style.css">
     <title>National Park Trip Planner</title>
 </head>
 <body>
-    <h1>It worked!</h1>
-    <footer>
-        <a href="https://www.nps.gov/index.htm" class="button button1">National Park Service</a>
-        <a href="index.html" class="button button2">Return to Home</a>
-    </footer>
-
+    <div class="row">
+        <header class="cell">
+            <h1>Saved Parks</h1>
+            <nav>
+                <a class="button" href="index.html">Back To Search</a>
+            </nav>
+        </header>
+        
+        <div class="small-2 large-4 columns">
+            <p id="nps-error-message" class="nps-error"></p>
+            <section id="saved-results">
+                <h3>Your Saved Locations!</h3>
+                <ol id="saved-results-list">
+                </ol>
+            </section>
+        </div>
+        
+        <footer class = "small-2 large-4 columns">
+            <p>For more information on your local parks check out the National Parks Service website!</p>
+            <a class="button" href="https://www.nps.gov/index.htm">National Park Service</a>
+        </footer>
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
-    <script src="assets/js/script.js"></script>
-    <script src="assets/js/google_maps.js"></script>
-    <script src="assets/js/nps.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoXn_X7KuEAYtlQ8VUpKfHmg0LmjCFqtU&callback=initMap" async defer></script>
+    <script src="script.js"></script>
+    <script src="google_maps.js"></script>
+    <script src="nps.js"></script>
 </body>
 </html>

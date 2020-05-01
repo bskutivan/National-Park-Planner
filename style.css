@@ -1,11 +1,10 @@
-  
 #map {
     height:400px;
     width: 100%;
 }
 
 :root {
-    --primary: #2b580c;
+    --primary: #2B580C;
     --secondary: #639A67;
     --tertiary: #D8EBB5;
     --final: #D9BF77;
@@ -13,27 +12,37 @@
 
 header {
     background-color: var(--primary);
+    color: var(--final);
     text-align: center;
 }
 
-h1 {
-    font-weight: 500;
-} 
-
-.button1 {
-    background-color: #639A67;
-    text-align: right;
-    display: inline-block;
-    border-radius: 12px;
+#map_container {
+    padding-bottom: 45px;
 }
 
-.success {
-    background-color: #639A67;
-    border-radius: 12px;
+body {
+    background-color: var(--tertiary);
 }
 
-.button2 {
-    float:right;
-    background-color: #639A67;
-    border-radius: 12px;
+.button {
+    border-radius: 5px;
+    background-color: var(--secondary);
+    color: var(--final);
+}
+
+.button:hover {
+    background-color: maroon;
+}
+
+footer {
+    background-color: var(--primary);
+    color: var(--final);
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.hidden {
+    display:none;
 }
