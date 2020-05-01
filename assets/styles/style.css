@@ -15,6 +15,10 @@ header {
     color: var(--final);
 }
 
+#map_container {
+    padding-bottom: 45px;
+}
+
 body {
     background-color: var(--tertiary);
 }
@@ -32,6 +36,10 @@ body {
 footer {
     background-color: var(--primary);
     color: var(--final);
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .hidden {
