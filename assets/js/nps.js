@@ -1,6 +1,8 @@
 const api_key = 'VfkmmuuGjuSAkheEeXmvfQS5Q6HchOCAN2SEgZvm'; 
 const searchURL = 'https://developer.nps.gov/api/v1/parks';
 var stateCode = specifiedStateCode
+var resultsListEl = document.getElementById('results-list');
+
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params)
@@ -64,7 +66,10 @@ function submitButtonHandler() {
 
 } 
 
-
-
-
 formEl.addEventListener("submit", submitButtonHandler);
+
+document.getElementById('save-btn').addEventListener('click', function(event) {
+    event.preventDefault();
+    localStorage.setItem('savedData', resultsListEl.innerHTML);
+    document.getElementById('saved-results-list').innerHTML = localStorage.getItem('savedData');
+});
