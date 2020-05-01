@@ -46,7 +46,7 @@ function centerMap(address) {
                 var lat = data.results[0].geometry.location.lat;
                 var lng = data.results[0].geometry.location.lng;
                 specifiedStateCode = data.results[0].address_components[2].short_name;
-                
+                console.log(specifiedStateCode);
                 specifyMap(lat, lng);
 
             })
