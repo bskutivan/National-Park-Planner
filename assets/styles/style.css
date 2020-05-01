@@ -12,14 +12,34 @@
 
 header {
     background-color: var(--primary);
+    color: var(--final);
 }
 
-#park {
-    border: solid;
+#map_container {
+    padding-bottom: 45px;
 }
 
-#park:hover {
+body {
+    background-color: var(--tertiary);
+}
+
+.button {
+    border-radius: 5px;
+    background-color: var(--secondary);
+    color: var(--final);
+}
+
+.button:hover {
+    background-color: maroon;
+}
+
+footer {
     background-color: var(--primary);
+    color: var(--final);
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .hidden {
