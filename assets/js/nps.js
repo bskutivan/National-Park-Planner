@@ -2,6 +2,7 @@ const api_key = 'VfkmmuuGjuSAkheEeXmvfQS5Q6HchOCAN2SEgZvm';
 const searchURL = 'https://developer.nps.gov/api/v1/parks';
 var stateCode = specifiedStateCode
 var resultsListEl = document.getElementById('results-list');
+var savedResultsEl = document.getElementById('saved-results-list');
 
 
 function formatQueryParams(params) {
@@ -20,13 +21,14 @@ function displayResults(responseJson) {
       `<li><h3>${responseJson.data[i].fullName} - Location: ${responseJson.data[i].states}</h3>
       <p>Address: ${responseJson.data[i].latLong}</p>
       <p>Description: ${responseJson.data[i].description}</p>
-      <p>Activities: ${responseJson.data[i].activities}</p>
       <p>URL: <a href="${responseJson.data[i].url}"</a>${responseJson.data[i].url}</p>
-      </li>`
+      </li>
+      <button id=save-btn>Save Park</button>`
     )}; 
   $('#results').removeClass('hidden');
   addMarker(mapMarkers);
 };
+
 
 function getParks(stateCode, limit=10) {
   const params = {
@@ -48,9 +50,9 @@ function getParks(stateCode, limit=10) {
       throw new Error(response.statusText);
     })
     .then(responseJson => displayResults(responseJson))
-    .catch(err => {
-      $('#error-message').text(`Something went wrong: ${err.message}`);
-    });
+    //.catch(err => {
+    //  $('#error-message').text(`Something went wrong: ${err.message}`);
+    //});
 }
 
 // Handlers and Event Listeners Below
@@ -71,5 +73,5 @@ formEl.addEventListener("submit", submitButtonHandler);
 document.getElementById('save-btn').addEventListener('click', function(event) {
     event.preventDefault();
     localStorage.setItem('savedData', resultsListEl.innerHTML);
-    document.getElementById('saved-results-list').innerHTML = localStorage.getItem('savedData');
 });
+
