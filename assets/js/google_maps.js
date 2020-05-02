@@ -9,12 +9,17 @@ mapMarkersTest = [];
 
 
 
-// function addMarker(mapMarkersTest) {
+function addMarker(markerLatLng, map) {
     
-//     console.log(mapMarkersTest);
 
+    var parkMarker = new google.maps.Marker({
+        positions:{markerLatLng},
+        map:map
+    });
+    console.log(parkMarker);
+    parkMarker.setMap(map);
   
-// };
+};
 
 
 // initialize map
@@ -30,22 +35,35 @@ function initMap() {
 }
 
 // Regenerate Map based on Input/Parks
-function specifyMap(lat, lng, mapMarkersTest) {
+function specifyMap(lat, lng) {
     // center on input address
     var options = {
-        zoom: 4,
-        center: {lat:lat, lng:lng}    
-    }
-    var map = new google.maps.Map(document.getElementById('map'), options);
-    // add marker
+            zoom: 4,
+            center: {lat:lat, lng:lng}    
+        }
+    var map = new   
+        
+    google.maps.Map(document.getElementById('map'), options);
 
-    var marker = new google.maps.Marker({
-        positions:{lat: lat, lng: lng},
+    // add marker
+    var homeMarker = new google.maps.Marker({
+        position:{lat:lat, lng:lng},
         map:map
     });
     console.log(map);
-    console.log(marker);
-    marker.setMap(map);
+    console.log(homeMarker);
+
+    for (var i = 0; i < mapMarkersTest.length; i++) {
+        trueParkLat = mapMarkersTest[i][0];
+        trueParkLng = mapMarkersTest[i][1];
+        var markerLatLng = {lat: trueParkLat, lng: trueParkLng};
+
+        addMarker(markerLatLng, map)
+    }
+    
+}
+    
+    // marker.setMap(map);
 
     // change variable to string and push to marker array
     // testLat = lat
@@ -57,13 +75,13 @@ function specifyMap(lat, lng, mapMarkersTest) {
     //     trueParkLng = mapMarkersTest[i][1];
     //     var markerLatLng = {lat: trueParkLat, lng: trueParkLng};
 
-    //     // var marker = new google.maps.Marker({
-    //     //     positions:{markerLatLng},
-    //     // });
-    //     // marker.setMap(map);
+    //     var parkMarker = new google.maps.Marker({
+    //         positions:{markerLatLng},
+    //     });
+    //     parkMarker.setMap(map);
     // }
-    // console.log(mapMarkersTest);
-}
+    // console.log(parkMarker);
+
 
 function getStateCode(lat,lng) {
     var apiUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&key=AIzaSyCoXn_X7KuEAYtlQ8VUpKfHmg0LmjCFqtU";
@@ -109,8 +127,11 @@ function trimLongLat(mapMarkersSplit) {
         var preParkLng = mapMarkersSplit[i][1];
 
         var parkLng = preParkLng.trim();
+        var numParkLng = parseFloat(parkLng);
 
-        mapMarkersTest.push([parkLat, parkLng]);
+        var numParkLat = parseFloat(parkLat);
+
+        mapMarkersTest.push([numParkLat, numParkLng]);
     }
     specifyMap(lat,lng,mapMarkersTest);
 
