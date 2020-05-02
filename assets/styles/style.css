@@ -13,6 +13,7 @@
 header {
     background-color: var(--primary);
     color: var(--final);
+    text-align: center;
 }
 
 #map_container {
