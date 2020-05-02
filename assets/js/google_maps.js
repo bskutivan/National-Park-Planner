@@ -3,22 +3,21 @@
 mapMarkers = [];
 mapMarkersSplit = [];
 mapMarkersTrimmed = [];
-mapMarkersTest = [];
-// let lat
-// let lng
+mapMarkersNumbers = [];
+
+// final array of the map marker objects
+mapMarkersObjectArray = [];
 
 
 
-function addMarker(markerLatLng, map) {
+
+function addMarker(mapMarkersObjectArray, map) {
     
+    console.log(mapMarkersObjectArray);
 
-    var parkMarker = new google.maps.Marker({
-        positions:{markerLatLng},
-        map:map
-    });
-    console.log(parkMarker);
-    parkMarker.setMap(map);
-  
+    for (var i = 0; i < mapMarkersObjectArray.length; i++) {
+        mapMarkersObjectArray[i].setMap(map);
+    }
 };
 
 
@@ -34,7 +33,7 @@ function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), options)
 }
 
-// Regenerate Map based on Input/Parks
+// Regenerate Map based on Input info/Parks info
 function specifyMap(lat, lng) {
     // center on input address
     var options = {
@@ -45,44 +44,35 @@ function specifyMap(lat, lng) {
         
     google.maps.Map(document.getElementById('map'), options);
 
-    // add marker
+    // generate home marker
     var homeMarker = new google.maps.Marker({
         position:{lat:lat, lng:lng},
-        map:map
     });
+
+    // push home array into marker array
+    mapMarkersObjectArray.push(homeMarker);
+
     console.log(map);
     console.log(homeMarker);
 
-    for (var i = 0; i < mapMarkersTest.length; i++) {
-        trueParkLat = mapMarkersTest[i][0];
-        trueParkLng = mapMarkersTest[i][1];
+    for (var i = 0; i < mapMarkersNumbers.length; i++) {
+        trueParkLat = mapMarkersNumbers[i][0];
+        trueParkLng = mapMarkersNumbers[i][1];
+        //generate latlng variable for marker property
         var markerLatLng = {lat: trueParkLat, lng: trueParkLng};
 
-        addMarker(markerLatLng, map)
+        var parkMarker = new google.maps.Marker({
+            positions:{markerLatLng},
+        });
+        //push park marker into final marker array
+        mapMarkersObjectArray.push(parkMarker);
+      
     }
-    
+    // take mapMarkers array and feed into addMarker function
+    addMarker(mapMarkersObjectArray, map)
 }
-    
-    // marker.setMap(map);
 
-    // change variable to string and push to marker array
-    // testLat = lat
-    // testLng = lng
-    // mapMarkersTest.push([testLat, testLng]);
-    
-    // for (var i = 0; i < mapMarkersTest.length; i++) {
-    //     trueParkLat = mapMarkersTest[i][0];
-    //     trueParkLng = mapMarkersTest[i][1];
-    //     var markerLatLng = {lat: trueParkLat, lng: trueParkLng};
-
-    //     var parkMarker = new google.maps.Marker({
-    //         positions:{markerLatLng},
-    //     });
-    //     parkMarker.setMap(map);
-    // }
-    // console.log(parkMarker);
-
-
+// feed lat and lng received from below fetch request back in to get isolated state code.
 function getStateCode(lat,lng) {
     var apiUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&key=AIzaSyCoXn_X7KuEAYtlQ8VUpKfHmg0LmjCFqtU";
     
@@ -99,6 +89,7 @@ function getStateCode(lat,lng) {
     })
 }
 
+// use captured address in fetch request to get lat and lng of searched address
 function centerMap(address) {
 
     var apiUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyCoXn_X7KuEAYtlQ8VUpKfHmg0LmjCFqtU"
@@ -118,6 +109,7 @@ function centerMap(address) {
     });
 }
 
+// trim and parse lat and lng from below function to get numbers then run into new map funciton.
 function trimLongLat(mapMarkersSplit) {
     for (let i = 0; i < mapMarkersSplit.length; i++) {
         if (!mapMarkersSplit[i][0]) {
@@ -131,12 +123,12 @@ function trimLongLat(mapMarkersSplit) {
 
         var numParkLat = parseFloat(parkLat);
 
-        mapMarkersTest.push([numParkLat, numParkLng]);
+        mapMarkersNumbers.push([numParkLat, numParkLng]);
     }
-    specifyMap(lat,lng,mapMarkersTest);
+    specifyMap(lat,lng,mapMarkersNumbers);
 
 }
-
+// split lat and lng from parks response to isolate values.
 function splitLongLat(mapMarkers) {
     for (let i = 0; i < mapMarkers.length; i++) {
         var latLng = mapMarkers[i].replace(/long:/, "");
