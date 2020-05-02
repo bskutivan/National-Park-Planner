@@ -43,7 +43,8 @@ function specifyMap(lat, lng) {
     var map = new   
         
     google.maps.Map(document.getElementById('map'), options);
-
+    console.log(lat);
+    console.log(lng);
     // generate home marker
     var homeMarker = new google.maps.Marker({
         position:{lat:lat, lng:lng},
@@ -53,17 +54,18 @@ function specifyMap(lat, lng) {
     mapMarkersObjectArray.push(homeMarker);
 
     console.log(map);
-    console.log(homeMarker);
 
     for (var i = 0; i < mapMarkersNumbers.length; i++) {
-        trueParkLat = mapMarkersNumbers[i][0];
-        trueParkLng = mapMarkersNumbers[i][1];
+        lat = mapMarkersNumbers[i][0];
+        lng = mapMarkersNumbers[i][1];
         //generate latlng variable for marker property
-        var markerLatLng = {lat: trueParkLat, lng: trueParkLng};
+        //var markerLatLng = {lat:Lat,lng:Lng};
 
+        //console.log(markerLatLng);
         var parkMarker = new google.maps.Marker({
-            positions:{markerLatLng},
+            position:{lat:lat, lng:lng},
         });
+
         //push park marker into final marker array
         mapMarkersObjectArray.push(parkMarker);
       
