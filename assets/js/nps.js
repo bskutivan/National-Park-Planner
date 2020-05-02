@@ -50,6 +50,8 @@ function getParks(stateCode, limit=10) {
     .catch(err => {
       $('#error-message').text(`Something went wrong: ${err.message}`);
     });
+
+
 }
 
 // Handlers and Event Listeners Below

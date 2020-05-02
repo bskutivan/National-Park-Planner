@@ -1,36 +1,20 @@
 // create park map markers
 
 mapMarkers = [];
-splitMapMarkers = [];
-
-function splitLongLat(mapMarkers) {
-    console.log(mapMarkers);
-    for (let i = 0; i < mapMarkers.length; i++) {
-        console.log(mapMarkers[i]);
-        var test = mapMarkers[i].replace(o, "");
-        console.log(test);
-        // for (let u = 0; u < split.length; u++) {
-        //     if (u = 0) {
-        //         test = split[u].slice(4);
-        //     } else {
-        //         test = split[u].slice(5);
-        //     }
-        //     console.log(test);
-        // }
-
-        //splitMapMarkers.push(split);
-        //console.log(splitMapMarkers);
-    };
+mapMarkersSplit = [];
+mapMarkersTrimmed = [];
+mapMarkersTest = [];
+// let lat
+// let lng
 
 
-}
 
-function addMarker(mapMarkers) {
-    var marker = new google.maps.Marker({
-        positions:{lat:[i].lat, lng:[i].long},
-        map:map
-    })
-};
+// function addMarker(mapMarkersTest) {
+    
+//     console.log(mapMarkersTest);
+
+  
+// };
 
 
 // initialize map
@@ -42,28 +26,43 @@ function initMap() {
         zoom: 4,
         center: {lat:39.8283, lng:-98.5795}    
     }
-    var map = new   
-    
-    google.maps.Map(document.getElementById('map'), options)
+    var map = new google.maps.Map(document.getElementById('map'), options)
 }
 
-// take lat and lng values and recenter map
-function specifyMap(lat, lng) {
+// Regenerate Map based on Input/Parks
+function specifyMap(lat, lng, mapMarkersTest) {
     // center on input address
     var options = {
-            zoom: 4,
-            center: {lat:lat, lng:lng}    
-        }
-    var map = new   
-        
-    google.maps.Map(document.getElementById('map'), options);
-
+        zoom: 4,
+        center: {lat:lat, lng:lng}    
+    }
+    var map = new google.maps.Map(document.getElementById('map'), options);
     // add marker
+
     var marker = new google.maps.Marker({
-        position:{lat:lat, lng:lng},
+        positions:{lat: lat, lng: lng},
         map:map
     });
+    console.log(map);
+    console.log(marker);
+    marker.setMap(map);
+
+    // change variable to string and push to marker array
+    // testLat = lat
+    // testLng = lng
+    // mapMarkersTest.push([testLat, testLng]);
     
+    // for (var i = 0; i < mapMarkersTest.length; i++) {
+    //     trueParkLat = mapMarkersTest[i][0];
+    //     trueParkLng = mapMarkersTest[i][1];
+    //     var markerLatLng = {lat: trueParkLat, lng: trueParkLng};
+
+    //     // var marker = new google.maps.Marker({
+    //     //     positions:{markerLatLng},
+    //     // });
+    //     // marker.setMap(map);
+    // }
+    // console.log(mapMarkersTest);
 }
 
 function getStateCode(lat,lng) {
@@ -89,16 +88,43 @@ function centerMap(address) {
     fetch(apiUrl).then(function(response) {
         if (response.ok) {
             response.json().then(function(data) {
-                var lat = data.results[0].geometry.location.lat;
-                var lng = data.results[0].geometry.location.lng;
+                lat = data.results[0].geometry.location.lat;
+                lng = data.results[0].geometry.location.lng;
                 
                 getStateCode(lat,lng);
-                
-                specifyMap(lat, lng);
             });
         } else {
             alert("Error: " + response.statusText);
         }
 
     });
+}
+
+function trimLongLat(mapMarkersSplit) {
+    for (let i = 0; i < mapMarkersSplit.length; i++) {
+        if (!mapMarkersSplit[i][0]) {
+            i++
+        }
+        var parkLat = mapMarkersSplit[i][0];
+        var preParkLng = mapMarkersSplit[i][1];
+
+        var parkLng = preParkLng.trim();
+
+        mapMarkersTest.push([parkLat, parkLng]);
+    }
+    specifyMap(lat,lng,mapMarkersTest);
+
+}
+
+function splitLongLat(mapMarkers) {
+    for (let i = 0; i < mapMarkers.length; i++) {
+        var latLng = mapMarkers[i].replace(/long:/, "");
+        var latLngWithoutText = latLng.replace(/lat:/, "");
+        var split = latLngWithoutText.split(",");
+
+        mapMarkersSplit.push(split);
+    };
+    trimLongLat(mapMarkersSplit);
+
+
 }
