@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"class="no-js" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
     <title>National Park Trip Planner</title>
 </head>
 <body>
-    <div class="grid-y">
+    <div class="row">
         <header class="cell">
             <h1>National Park Planner</h1>
             <nav>
@@ -17,7 +17,7 @@
             </nav>
         </header>
 
-        <div class="cell">
+        <div class="small-2 large-4 columns">
             <div class="input-group">
                 <form id="form">
                     <input class="input-group-field" id="address" type="text" placeholder="Enter Address Here!" />
@@ -30,7 +30,7 @@
         <div id= "map_container" class="cell">
             <div id="map"></div>
         </div>
-        <div class="cell">
+        <div class="small-2 large-4 columns">
             <p id="error-message" class="error"></p>
             <section id="results" class="hidden">
                 <h3>Search Results</h3>
@@ -40,7 +40,7 @@
             </section>
         </div>
 
-        <footer class = "cell">
+        <footer class = "small-2 large-4 columns">
             <p>For more information on your local parks check out the National Parks Service website!</p>
             <a class="button" href="https://www.nps.gov/index.htm">National Park Service</a>
         </footer>
