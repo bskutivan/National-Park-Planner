@@ -9,35 +9,42 @@
     <title>National Park Trip Planner</title>
 </head>
 <body>
-    <header>
-        <h1>National Park Planner</h1>
-        <nav>
-            <a href="saved_parks.html" id="saved-page">Save Parks</a>
-        </nav>
-    </header>
-   
-    <div>
-        <form id="form">
-            <input id="address" type="text" placeholder="Enter Address Here!" />
-            <button type="submit" class="success button">Search</button>
-        </form>
+    <div class="grid-y">
+        <header class="cell">
+            <h1>National Park Planner</h1>
+            <nav>
+                <a class="button" href="saved_parks.html">Saved Parks</a>
+            </nav>
+        </header>
+
+        <div class="cell">
+            <div class="input-group">
+                <form id="form">
+                    <input class="input-group-field" id="address" type="text" placeholder="Enter Address Here!" />
+                    <div class="input-group-button">
+                        <button type="submit" class="button">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id= "map_container" class="cell">
+            <div id="map"></div>
+        </div>
+        <div class="cell">
+            <p id="error-message" class="error"></p>
+            <section id="results" class="hidden">
+                <h3>Search Results</h3>
+                <ol id="results-list">
+                </ol>
+                <button class="button" id="save-btn">Save</button>
+            </section>
+        </div>
+
+        <footer class = "cell">
+            <p>For more information on your local parks check out the National Parks Service website!</p>
+            <a class="button" href="https://www.nps.gov/index.htm">National Park Service</a>
+        </footer>
     </div>
-
-    <div id="map"></div>
-
-    <div>
-        <p id="error-message" class="error"></p>
-        <section id="results" class="hidden">
-            <h3>Search Results</h3>
-            <ol id="results-list">
-            </ol>
-        </section>
-    </div>
-    
-    <footer>
-        <a href="https://www.nps.gov/index.htm">National Park Service</a>
-    </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/google_maps.js"></script>

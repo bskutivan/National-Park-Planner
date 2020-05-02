@@ -1,16 +1,35 @@
 // create park map markers
 
 mapMarkers = [];
+splitMapMarkers = [];
 
-function addMarker(responseJson) {
-    console.log(responseJson.data[0].latLong)
+function splitLongLat(mapMarkers) {
+    console.log(mapMarkers);
+    for (let i = 0; i < mapMarkers.length; i++) {
+        console.log(mapMarkers[i]);
+        // var split = mapMarkers[i].split(",");
+        // for (let u = 0; u < split.length; u++) {
+        //     if (u = 0) {
+        //         test = split[u].slice(4);
+        //     } else {
+        //         test = split[u].slice(5);
+        //     }
+        //     console.log(test);
+        // }
+
+        //splitMapMarkers.push(split);
+        //console.log(splitMapMarkers);
+    };
 
 
-    // var marker = new google.maps.Marker({
-    //     pisition:mapMarkers,
-    //     map:map
-    // })
 }
+
+function addMarker(mapMarkers) {
+    var marker = new google.maps.Marker({
+        positions:{lat:[i].lat, lng:[i].long},
+        map:map
+    })
+};
 
 
 // initialize map
@@ -43,18 +62,19 @@ function specifyMap(lat, lng) {
         position:{lat:lat, lng:lng},
         map:map
     });
-    console.log(specifiedStateCode); 
     
 }
 
 function getStateCode(lat,lng) {
     var apiUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&key=AIzaSyCoXn_X7KuEAYtlQ8VUpKfHmg0LmjCFqtU";
     
+    console.log(apiUrl);
     fetch(apiUrl).then(function(response) {
         if(response.ok) {
             response.json().then(function(data) {
-                specifiedStateCode = data.results[0].address_components[5].short_name;
-                getParks(specifiedStateCode);
+                stateCode = data.results[0].address_components[4].short_name;
+                console.log(stateCode); 
+                getParks(stateCode);
 
             }) 
         }

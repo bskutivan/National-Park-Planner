@@ -13,7 +13,6 @@ function formatQueryParams(params) {
 
 function displayResults(responseJson) {
   console.log(responseJson);
-  console.log(responseJson.data[0].latLong)
   $('#results-list').empty();
   for (let i = 0; i < responseJson.data.length; i++){
     mapMarkers.push(responseJson.data[i].latLong);
@@ -26,7 +25,7 @@ function displayResults(responseJson) {
       <button id=save-btn>Save Park</button>`
     )}; 
   $('#results').removeClass('hidden');
-  addMarker(mapMarkers);
+  splitLongLat(mapMarkers);
 };
 
 
