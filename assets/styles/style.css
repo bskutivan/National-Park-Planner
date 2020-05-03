@@ -45,3 +45,17 @@ footer {
 .hidden {
     display:none;
 }
+
+ol li {
+    border-style: solid;
+    border-radius: 5px;
+    border-color: var(--primary);
+}
+
+ol li > p {
+    color: var(--primary);
+}
+
+ol li > h3 {
+    color: var(--final);
+}
