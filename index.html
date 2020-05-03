@@ -9,42 +9,48 @@
     <title>National Park Trip Planner</title>
 </head>
 <body>
-    <div class="row">
-        <header class="cell">
-            <h1>National Park Planner</h1>
-            <nav>
-                <a class="button" href="saved_parks.html">Saved Parks</a>
-            </nav>
-        </header>
 
-        <div class="small-2 large-4 columns">
-            <div class="input-group">
-                <form id="form">
-                    <input class="input-group-field" id="address" type="text" placeholder="Enter Address Here!" />
+    <main>
+        <div class="grid-y">
+            <header class="cell">
+                <h1>National Park Planner</h1>
+                <nav>
+                    <a id="saved-parks-btn" class="button" href="saved_parks.html">Saved Parks</a>
+                </nav>
+            </header>
+
+            <div class="cell">
+                <div class="input-group">
+                    <input id="address" class="input-group-field" type="text" placeholder="Input address Here!">
+
                     <div class="input-group-button">
-                        <button type="submit" class="button">Search</button>
+                    <input id= "form" type="submit" class="button" value="Submit">
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
-        <div id= "map_container" class="cell">
-            <div id="map"></div>
-        </div>
-        <div class="small-2 large-4 columns">
-            <p id="error-message" class="error"></p>
-            <section id="results" class="hidden">
-                <h3>Search Results</h3>
-                <ol id="results-list">
-                </ol>
-                <button class="button" id="save-btn">Save</button>
-            </section>
-        </div>
+            <div id= "map_container" class="cell">
+                <div id="map"></div>
+                <h3 id="loading" class="hidden">All good things take time!</h3>
+            </div>
+            <div class="cell">
+                <p id="error-message" class="error"></p>
+                <section id="results" class="hidden">
+                    <h3>Search Results</h3>
+                    <ol id="results-list">
+                    </ol>
+                    <button class="button" id="save-btn">Save</button>
+                </section>
+            </div>
 
-        <footer class = "small-2 large-4 columns">
-            <p>For more information on your local parks check out the National Parks Service website!</p>
-            <a class="button" href="https://www.nps.gov/index.htm">National Park Service</a>
-        </footer>
-    </div>
+
+            <footer class = "cell">
+                <p>For more information on your local parks check out the National Parks Service website!</p>
+                <a class="button" href="https://www.nps.gov/index.htm">National Park Service</a>
+            </footer>
+        </div>
+    </main>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/google_maps.js"></script>
