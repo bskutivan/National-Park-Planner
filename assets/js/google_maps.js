@@ -121,26 +121,33 @@ function centerMap(address) {
 
 // trim and parse lat and lng from below function to get numbers then run into new map funciton.
 function trimLongLat(mapMarkersSplit) {
+    console.log(mapMarkersSplit);
     for (let i = 0; i < mapMarkersSplit.length; i++) {
-        if (!mapMarkersSplit[i][0]) {
+        if (mapMarkersSplit[i][0]) {
+       
+            var parkLat = mapMarkersSplit[i][0];
+            var preParkLng = mapMarkersSplit[i][1];
+
+            var parkLng = preParkLng.trim();
+            var numParkLng = parseFloat(parkLng);
+
+            var numParkLat = parseFloat(parkLat);
+
+            mapMarkersNumbers.push([numParkLat, numParkLng]);
+            console.log(mapMarkersNumbers)
+        }
+        else {
             i++
         }
-        var parkLat = mapMarkersSplit[i][0];
-        var preParkLng = mapMarkersSplit[i][1];
-
-        var parkLng = preParkLng.trim();
-        var numParkLng = parseFloat(parkLng);
-
-        var numParkLat = parseFloat(parkLat);
-
-        mapMarkersNumbers.push([numParkLat, numParkLng]);
     }
     specifyMap(lat,lng,mapMarkersNumbers);
 
 }
 // split lat and lng from parks response to isolate values.
 function splitLongLat(mapMarkers) {
+    console.log(mapMarkers);
     for (let i = 0; i < mapMarkers.length; i++) {
+    
         var latLng = mapMarkers[i].replace(/long:/, "");
         var latLngWithoutText = latLng.replace(/lat:/, "");
         var split = latLngWithoutText.split(",");
