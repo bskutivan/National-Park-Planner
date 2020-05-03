@@ -25,8 +25,8 @@ WHEN A USER VIEWS THE SAVED PARKS PAGE.
 THEN THE PARKS THEY SAVED ARE GENERATED FROM LOCALSTORAGE.
 
 #Screenshots
-![](https://github.com/bskutivan/Weather-Dashboard/blob/master/assets/images/Screenshot1.jpg)
-![](https://github.com/bskutivan/Weather-Dashboard/blob/master/assets/images/Screenshot2.jpg)
-![](https://github.com/bskutivan/Weather-Dashboard/blob/master/assets/images/Screenshot3.jpg) 
-![](https://github.com/bskutivan/Weather-Dashboard/blob/master/assets/images/Screenshot4.jpg) 
+![](https://github.com/bskutivan/National-Park-Planner/blob/master/assets/images/Screenshot1.jpg)
+![](https://github.com/bskutivan/National-Park-Planner/blob/master/assets/images/Screenshot2.jpg)
+![](https://github.com/bskutivan/National-Park-Planner/blob/master/assets/images/Screenshot3.jpg) 
+![](https://github.com/bskutivan/National-Park-Planner/blob/master/assets/images/Screenshot4.jpg) 
 
