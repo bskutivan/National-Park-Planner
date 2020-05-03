@@ -63,8 +63,10 @@ function getParks(stateCode, limit=10) {
 
 function submitButtonHandler() {
     event.preventDefault();
-
+  
     var address = addressEl.value.trim();
+
+    $(loadingEl).removeClass("hidden");
 
     centerMap(address);
 
@@ -72,7 +74,7 @@ function submitButtonHandler() {
 
 } 
 
-formEl.addEventListener("submit", submitButtonHandler);
+formEl.addEventListener("click", submitButtonHandler);
 
 document.getElementById('save-btn').addEventListener('click', function(event) {
     event.preventDefault();

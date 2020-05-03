@@ -72,6 +72,7 @@ function specifyMap(lat, lng) {
     }
     // take mapMarkers array and feed into addMarker function
     addMarker(mapMarkersObjectArray, map)
+    $(loadingEl).addClass("hidden");
 }
 
 // feed lat and lng received from below fetch request back in to get isolated state code.
