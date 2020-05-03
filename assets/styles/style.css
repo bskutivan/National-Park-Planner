@@ -16,7 +16,7 @@ header {
 }
 
 #map_container {
-    padding-bottom: 45px;
+    padding-bottom: 10px;
 }
 
 body {
@@ -33,6 +33,10 @@ body {
     background-color: maroon;
 }
 
+.button:focus {
+    background-color: maroon;
+}
+
 footer {
     background-color: var(--primary);
     color: var(--final);
@@ -40,6 +44,12 @@ footer {
     justify-content: center;
     justify-content: space-around;
     align-items: center;
+    position: fixed;
+    bottom: 1px;
+}
+
+#loading {
+    color:maroon;
 }
 
 .hidden {
