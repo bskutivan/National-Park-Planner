@@ -82,9 +82,17 @@ function getStateCode(lat,lng) {
     fetch(apiUrl).then(function(response) {
         if(response.ok) {
             response.json().then(function(data) {
-                stateCode = data.results[0].address_components[4].short_name;
-                console.log(stateCode); 
-                getParks(stateCode);
+                addressComponents = data.results[0].address_components;
+                for (var i = 0; i < addressComponents.length; i++) {
+                    if (addressComponents[i].types[0] === "administrative_area_level_1") {
+                        var stateCode = addressComponents[i].short_name;
+                    
+                    
+                        getParks(stateCode);
+ 
+                    }
+                }
+                
 
             }) 
         }
