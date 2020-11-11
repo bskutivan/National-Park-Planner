@@ -1,4 +1,5 @@
 # National-Park-Planner
+![Github licence](http://img.shields.io/badge/license-MIT-blue.svg)
 
 #Project Goal
 For this project we wanted to create a way to utilize the National Park Services free API so that users could explore parks and monuments around them while staying safely at home during the COVID-19 pandemic.
