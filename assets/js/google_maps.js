@@ -9,7 +9,6 @@ mapMarkersNumbers = [];
 mapMarkersObjectArray = [];
 
 
-const Key = process.env.API_KEY;
 
 function addMarker(mapMarkersObjectArray, map) {
     
@@ -77,6 +76,9 @@ function specifyMap(lat, lng) {
 
 // feed lat and lng received from below fetch request back in to get isolated state code.
 function getStateCode(lat,lng) {
+
+    const Key = process.env.API_KEY;
+
     var apiUrl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&key=" + Key;
     
     console.log(apiUrl);
@@ -102,6 +104,8 @@ function getStateCode(lat,lng) {
 
 // use captured address in fetch request to get lat and lng of searched address
 function centerMap(address) {
+
+    const Key = process.env.API_KEY;
 
     var apiUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + Key;
 
