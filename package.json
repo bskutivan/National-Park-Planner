@@ -1,0 +1,22 @@
+{
+  "name": "national-park-planner",
+  "version": "1.0.0",
+  "description": "![Github licence](http://img.shields.io/badge/license-MIT-blue.svg)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bskutivan/National-Park-Planner.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bskutivan/National-Park-Planner/issues"
+  },
+  "homepage": "https://github.com/bskutivan/National-Park-Planner#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
