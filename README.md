@@ -1,4 +1,5 @@
 # National-Park-Planner
+![Github licence](http://img.shields.io/badge/license-MIT-blue.svg)
 
 #Project Goal
 For this project we wanted to create a way to utilize the National Park Services free API so that users could explore parks and monuments around them while staying safely at home during the COVID-19 pandemic.
@@ -30,3 +31,17 @@ THEN THE PARKS THEY SAVED ARE GENERATED FROM LOCALSTORAGE.
 ![](https://github.com/bskutivan/National-Park-Planner/blob/master/assets/images/Screenshot3.png) 
 ![](https://github.com/bskutivan/National-Park-Planner/blob/master/assets/images/Screenshot4.png) 
 
+
+#Direction for Future Development
+
+Integration of directions.
+
+Integration of more information from NPS API.
+
+Saving individual parks.
+
+More map marker functionality.
+
+
+#Presentation Link
+https://docs.google.com/presentation/d/1gHKgB4a02uigi-Zl7raTKeGJyL8AlzuJ8ZlkIaPMRg4/edit?usp=sharing
